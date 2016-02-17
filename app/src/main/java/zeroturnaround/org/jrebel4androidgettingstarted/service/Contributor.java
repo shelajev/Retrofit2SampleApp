@@ -6,11 +6,20 @@ package zeroturnaround.org.jrebel4androidgettingstarted.service;
 public class Contributor {
 
     String login;
-    String url;
+    int contributions;
+    String avatar_url;
 
 
     public String getLogin() {
         return login;
+    }
+
+    public int getContributions() {
+        return contributions;
+    }
+
+    public String getAvatarUrl() {
+        return avatar_url;
     }
 
     @Override

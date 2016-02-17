@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="12dp">
 
-    <TextView
-        android:id="@+id/contributor_name"
+    <ImageView
+        android:id="@+id/contributor_avatar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@android:drawable/sym_contact_card" />
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/list_item_padding"/>
+        android:layout_margin="6dp">
+
+        <TextView
+            android:id="@+id/contributor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Holo.Medium"/>
+
+        <TextView
+            android:id="@+id/contributor_contributions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Holo"/>
+
+    </LinearLayout>
 
 </LinearLayout>
-
 

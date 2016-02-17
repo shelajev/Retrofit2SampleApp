@@ -14,6 +14,7 @@ import java.util.List;
 import zeroturnaround.org.jrebel4androidgettingstarted.ContributorsApplication;
 import zeroturnaround.org.jrebel4androidgettingstarted.R;
 import zeroturnaround.org.jrebel4androidgettingstarted.adapter.ContributorsAdapter;
+import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.PicassoImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
 
@@ -52,6 +53,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
         super.onCreate(savedInstanceState);
         contributorService = ((ContributorsApplication) getActivity().getApplicationContext()).getContributorService();
         contributorService.addListener(this);
+
     }
 
     @Override
@@ -62,7 +64,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
         //Butterknife, come help me!
         contributorsListView = (ListView) rootView.findViewById(R.id.contributors_list);
-        contributorsAdapter = new ContributorsAdapter(getActivity());
+        contributorsAdapter = new ContributorsAdapter(getActivity(), new PicassoImageLoader());
         contributorsListView.setAdapter(contributorsAdapter);
 
         contributorsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
