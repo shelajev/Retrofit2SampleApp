@@ -1,0 +1,51 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/input_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_label_company"
+            android:paddingTop="12dp"/>
+
+        <EditText
+            android:id="@+id/company_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/company_edittext_default"
+            android:layout_centerHorizontal="true"
+            android:imeOptions="actionDone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_label_repository"
+            android:paddingTop="12dp"/>
+
+        <EditText
+            android:id="@+id/repository_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/repository_edittext_default"
+            android:layout_below="@id/company_edittext"
+            android:imeOptions="actionDone"/>
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_button"/>
+
+    </LinearLayout>
+
+</FrameLayout>

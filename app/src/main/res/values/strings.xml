@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">JRebel4AndroidGettingStarted</string>
+    <string name="app_name">ImageLoaders</string>
     <string name="action_settings">Settings</string>
+    <string name="search_label_company">Company</string>
+    <string name="search_label_repository">Repository</string>
+    <string name="search_button">Search</string>
+    <string name="company_edittext_default">square</string>
+    <string name="repository_edittext_default">picasso</string>
 </resources>

@@ -8,6 +8,11 @@ public class Contributor {
     String login;
     String url;
 
+
+    public String getLogin() {
+        return login;
+    }
+
     @Override
     public String toString() {
         return login;
