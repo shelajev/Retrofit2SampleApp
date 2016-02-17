@@ -1,4 +1,4 @@
-package zeroturnaround.org.jrebel4androidgettingstarted;
+package zeroturnaround.org.jrebel4androidgettingstarted.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,12 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.List;
 
-import retrofit.Call;
 
-public class MainActivity extends AppCompatActivity {
+import zeroturnaround.org.jrebel4androidgettingstarted.R;
+import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
+import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
+import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService.ContributorsListener;
+
+public class MainActivity extends AppCompatActivity implements ContributorsListener {
+
+    private ContributorsService contributorsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,35 +40,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button = (Button) findViewById(R.id.button);
+        contributorsService = new ContributorsService();
+        contributorsService.addListener(this);
+
+        final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GitHubService gitHubService = GitHubService.retrofit.create(GitHubService.class);
-                final Call<List<Contributor>> call =
-                        gitHubService.repoContributors("square", "retrofit");
-                new NetworkCall().execute(call);
+                contributorsService.requestContributors("square", "retrofit");
+                button.setVisibility(View.GONE);
             }
         });
     }
 
-    private class NetworkCall extends AsyncTask<Call, Void, String> {
-        @Override
-        protected String doInBackground(Call... params) {
-            try {
-                return params[0].execute().body().toString();
-            } catch (IOException e) {
-                e.printStackTrace();
+    @Override
+    protected void onDestroy() {
+        contributorsService.removeListener(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onContributorsLoaded(List<Contributor> contributors) {
+        final TextView textView = (TextView) findViewById(R.id.textView);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Contributor contributor : contributors) {
+            if (stringBuilder.length() > 0) {
+                stringBuilder.append(", ");
             }
-
-            return null;
+            stringBuilder.append(contributor);
         }
+        textView.setText(stringBuilder.toString());
+    }
 
-        @Override
-        protected void onPostExecute(String result) {
-            final TextView textView = (TextView) findViewById(R.id.textView);
-            textView.setText(result);
-        }
+    @Override
+    public void onContributorsLoadFailed(String message) {
     }
 
     @Override

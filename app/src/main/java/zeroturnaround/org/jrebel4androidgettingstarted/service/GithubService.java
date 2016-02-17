@@ -1,12 +1,14 @@
-package zeroturnaround.org.jrebel4androidgettingstarted;
+package zeroturnaround.org.jrebel4androidgettingstarted.service;
 
 import java.util.List;
 
-import retrofit.Call;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Path;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
 
 /**
  * Created by shelajev on 16/12/15.

@@ -1,4 +1,4 @@
-package zeroturnaround.org.jrebel4androidgettingstarted;
+package zeroturnaround.org.jrebel4androidgettingstarted.service;
 
 /**
  * Created by shelajev on 16/12/15.
