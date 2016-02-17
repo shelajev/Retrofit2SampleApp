@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">ImageLoaders</string>
-    <string name="action_settings">Settings</string>
     <string name="search_label_company">Company</string>
     <string name="search_label_repository">Repository</string>
     <string name="search_button">Search</string>
     <string name="company_edittext_default">square</string>
     <string name="repository_edittext_default">picasso</string>
     <string name="contributors_list_item_contribution">Contributions: %1$s</string>
+    <string name="menu_title_picasso">Picasso</string>
+    <string name="menu_title_fresco">Fresco</string>
+    <string name="menu_title_glide">Glide</string>
 </resources>

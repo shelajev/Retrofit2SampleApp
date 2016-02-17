@@ -3,6 +3,8 @@ package zeroturnaround.org.jrebel4androidgettingstarted.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
         super.onCreate(savedInstanceState);
         contributorService = ((ContributorsApplication) getActivity().getApplicationContext()).getContributorService();
         contributorService.addListener(this);
+        setHasOptionsMenu(true);
 
     }
 
@@ -95,5 +98,25 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
     public void onDestroy() {
         contributorService.removeListener(this);
         super.onDestroy();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_fresco) {
+
+        } else if (item.getItemId() == R.id.menu_item_glide) {
+            contributorsAdapter.setImageLoaderAndNotify(new GlideImageLoader());
+            return true;
+        } else if (item.getItemId() == R.id.menu_item_picasso) {
+            contributorsAdapter.setImageLoaderAndNotify(new PicassoImageLoader());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
