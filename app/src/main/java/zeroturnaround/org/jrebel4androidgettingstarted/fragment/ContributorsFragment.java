@@ -16,6 +16,7 @@ import java.util.List;
 import zeroturnaround.org.jrebel4androidgettingstarted.ContributorsApplication;
 import zeroturnaround.org.jrebel4androidgettingstarted.R;
 import zeroturnaround.org.jrebel4androidgettingstarted.adapter.ContributorsAdapter;
+import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.FrescoImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.GlideImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.PicassoImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
@@ -30,8 +31,8 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
     private ContributorsAdapter contributorsAdapter;
     private ListView contributorsListView;
-
     private ContributorsService contributorService;
+    private List<Contributor> contributors;
 
     public ContributorsFragment() {
         // Required empty public constructor
@@ -87,6 +88,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
     @Override
     public void onContributorsLoaded(List<Contributor> contributors) {
+        this.contributors = contributors;
         contributorsAdapter.setContributorListAndNotify(contributors);
     }
 
@@ -109,7 +111,10 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_item_fresco) {
-
+            //Create a new adapter
+            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new FrescoImageLoader());
+            contributorsListView.setAdapter(contributorsAdapter);
+            return true;
         } else if (item.getItemId() == R.id.menu_item_glide) {
             contributorsAdapter.setImageLoaderAndNotify(new GlideImageLoader());
             return true;

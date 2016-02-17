@@ -12,6 +12,7 @@ import java.util.List;
 
 import zeroturnaround.org.jrebel4androidgettingstarted.R;
 import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.ImageLoader;
+import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.FrescoImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
 
 /**
@@ -56,7 +57,12 @@ public class ContributorsAdapter extends BaseAdapter {
         Contributor contributor = getItem(position);
 
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.contributors_list_item, null);
+            //Bleh! A kitty just died.
+            if (imageLoader instanceof FrescoImageLoader) {
+                convertView = View.inflate(context, R.layout.contributors_list_item_fresco, null);
+            } else {
+                convertView = View.inflate(context, R.layout.contributors_list_item, null);
+            }
 
             viewHolder = new ViewHolder();
             viewHolder.contributorNameTextView = (TextView) convertView.findViewById(R.id.contributor_name);
