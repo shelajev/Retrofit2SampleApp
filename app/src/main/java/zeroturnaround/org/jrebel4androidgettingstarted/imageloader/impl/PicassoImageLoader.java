@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.widget.ImageView;
 
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -45,6 +46,7 @@ public class PicassoImageLoader implements ImageLoader {
             public String key() {
                 return PicassoImageLoader.class.getName() + ".Transformation";
             }
-        }).into(imageView);
+        }).error(android.R.drawable.sym_contact_card).placeholder(android.R.drawable.sym_contact_card).
+                into(imageView);
     }
 }

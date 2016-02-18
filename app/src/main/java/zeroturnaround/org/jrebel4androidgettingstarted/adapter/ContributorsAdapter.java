@@ -87,11 +87,6 @@ public class ContributorsAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void setImageLoaderAndNotify(ImageLoader imageLoader) {
-        this.imageLoader = imageLoader;
-        notifyDataSetChanged();
-    }
-
 
     public static class ViewHolder {
 
