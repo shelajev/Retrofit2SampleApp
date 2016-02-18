@@ -69,7 +69,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
         //Butterknife, come help me!
         contributorsListView = (ListView) rootView.findViewById(R.id.contributors_list);
-        contributorsAdapter = new ContributorsAdapter(getActivity(), new GlideImageLoader());
+        contributorsAdapter = new ContributorsAdapter(getActivity(), new PicassoImageLoader());
         contributorsListView.setAdapter(contributorsAdapter);
 
         contributorsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -105,7 +105,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+//        inflater.inflate(R.menu.menu_main, menu);
     }
 
     @Override
@@ -116,10 +116,12 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
             contributorsListView.setAdapter(contributorsAdapter);
             return true;
         } else if (item.getItemId() == R.id.menu_item_glide) {
-            contributorsAdapter.setImageLoaderAndNotify(new GlideImageLoader());
+            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new GlideImageLoader());
+            contributorsListView.setAdapter(contributorsAdapter);
             return true;
         } else if (item.getItemId() == R.id.menu_item_picasso) {
-            contributorsAdapter.setImageLoaderAndNotify(new PicassoImageLoader());
+            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new PicassoImageLoader());
+            contributorsListView.setAdapter(contributorsAdapter);
             return true;
         }
         return super.onOptionsItemSelected(item);

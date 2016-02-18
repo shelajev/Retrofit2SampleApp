@@ -18,6 +18,7 @@ public class PicassoImageLoader implements ImageLoader {
 
     @Override
     public void loadImage(String url,final ImageView imageView) {
+
         Picasso.with(imageView.getContext()).load(url).transform(new Transformation() {
             @Override
             public Bitmap transform(Bitmap source) {
@@ -32,7 +33,7 @@ public class PicassoImageLoader implements ImageLoader {
                 matrix.preScale(-1, 1);
                 matrix.postTranslate(0, source.getHeight() * 2);
 
-                BlurTransformation blurTransformation = new BlurTransformation(imageView.getContext(), 10, 1);
+                BlurTransformation blurTransformation = new BlurTransformation(imageView.getContext(), 15, 1);
                 Bitmap bottom = blurTransformation.transform(source);
 
                 combinedCanvas.setMatrix(matrix);
