@@ -1,6 +1,5 @@
 package zeroturnaround.org.jrebel4androidgettingstarted;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,31 +48,23 @@ public class MainActivity extends AppCompatActivity {
                 GitHubService gitHubService = GitHubService.retrofit.create(GitHubService.class);
                 final Call<List<Contributor>> call =
                         gitHubService.repoContributors("square", "retrofit");
-                new NetworkCall().execute(call);
+
+                call.enqueue(new Callback<List<Contributor>>() {
+                    @Override
+                    public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
+                        final TextView textView = (TextView) findViewById(R.id.textView);
+                        textView.setText(response.body().toString());
+                    }
+                    @Override
+                    public void onFailure(Call<List<Contributor>> call, Throwable t) {
+                        final TextView textView = (TextView) findViewById(R.id.textView);
+                        textView.setText("Something went wrong: " + t.getMessage());
+                    }
+                });
             }
         });
     }
 
-    private class NetworkCall extends AsyncTask<Call, Void, String> {
-        @Override
-        protected String doInBackground(Call... params) {
-            try {
-                Call<List<Contributor>> call = params[0];
-                Response<List<Contributor>> response = call.execute();
-                return response.body().toString();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            final TextView textView = (TextView) findViewById(R.id.textView);
-            textView.setText(result);
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
