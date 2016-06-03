@@ -6,10 +6,12 @@ package zeroturnaround.org.jrebel4androidgettingstarted;
 public class Contributor {
 
     String login;
-    String url;
+    String html_url;
+
+    int contributions;
 
     @Override
     public String toString() {
-        return login;
+        return login + " (" + contributions + ")";
     }
 }

@@ -15,9 +15,12 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.List;
 
-import retrofit.Call;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Call... params) {
             try {
-                return params[0].execute().body().toString();
+                Call<List<Contributor>> call = params[0];
+                Response<List<Contributor>> response = call.execute();
+                return response.body().toString();
             } catch (IOException e) {
                 e.printStackTrace();
             }

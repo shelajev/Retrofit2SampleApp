@@ -31,5 +31,6 @@
         android:layout_above="@+id/button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:textIsSelectable="false" />
 </RelativeLayout>
