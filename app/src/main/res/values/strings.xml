@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ImageLoaders</string>
+    <string name="app_name">Github contributors</string>
     <string name="search_label_company">Company</string>
     <string name="search_label_repository">Repository</string>
     <string name="search_button">Search</string>
