@@ -33,6 +33,7 @@ public class ContributorsApplication extends Application {
                 .build());
 
         contributorsService = new ContributorsService();
+
     }
 
     public ContributorsService getContributorService() {

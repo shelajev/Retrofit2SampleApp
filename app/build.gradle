@@ -38,4 +38,11 @@ dependencies {
 
     compile 'com.facebook.fresco:fresco:0.9.0'
     compile 'jp.wasabeef:fresco-processors:1.1.1'
+
+    compile 'com.google.firebase:firebase-core:9.0.2'
 }
+
+apply plugin: 'com.google.gms.google-services'
+
+
+

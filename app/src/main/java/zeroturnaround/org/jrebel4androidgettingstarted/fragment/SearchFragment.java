@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 
@@ -52,15 +55,25 @@ public class SearchFragment extends Fragment implements ContributorsService.Cont
             }
         });
 
+        final FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contributorsService.requestContributors(companyEditText.getEditableText().toString(),
-                        repositoryEditText.getEditableText().toString());
+                String companySearchKeyword = companyEditText.getEditableText().toString();
+                String repositorySearchKeyword = repositoryEditText.getEditableText().toString();
+                contributorsService.requestContributors(companySearchKeyword, repositorySearchKeyword);
 
+                sendSearchAnalytics(companySearchKeyword, repositorySearchKeyword, firebaseAnalytics);
             }
         });
         return rootView;
+    }
+
+    private void sendSearchAnalytics(String companySearchKeyword, String repositorySearchKeyword, FirebaseAnalytics firebaseAnalytics) {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SEARCH_TERM, repositorySearchKeyword + "&" + companySearchKeyword);
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SEARCH, bundle);
     }
 
     @Override

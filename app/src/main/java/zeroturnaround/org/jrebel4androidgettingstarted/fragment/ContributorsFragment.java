@@ -69,7 +69,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
         //Butterknife, come help me!
         contributorsListView = (ListView) rootView.findViewById(R.id.contributors_list);
-        contributorsAdapter = new ContributorsAdapter(getActivity(), new PicassoImageLoader());
+        contributorsAdapter = new ContributorsAdapter(getActivity(), new GlideImageLoader());
         contributorsListView.setAdapter(contributorsAdapter);
 
         contributorsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
