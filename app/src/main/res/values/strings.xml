@@ -9,4 +9,6 @@
     <string name="menu_title_picasso">Picasso</string>
     <string name="menu_title_fresco">Fresco</string>
     <string name="menu_title_glide">Glide</string>
+    <string name="title_activity_contributor">Contributor</string>
+    <string name="title_activity_contributors">Contributors</string>
 </resources>

@@ -1,13 +1,16 @@
 package zeroturnaround.org.jrebel4androidgettingstarted.service;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import timber.log.Timber;
 
 /**
  * Created by Sten on 17/02/16.
@@ -59,6 +62,26 @@ public class ContributorsService {
         });
     }
 
+    public void requestUser(Contributor contributor) {
+        Timber.d("Requesting more about " + contributor);
+        Call<Contributor> contributorCall = gitHubService.user(contributor.getLogin());
+        contributorCall.enqueue(new Callback<Contributor>() {
+            @Override
+            public void onResponse(Call<Contributor> call, Response<Contributor> response) {
+                for (ContributorsListener listener : listeners) {
+                    listener.onContributorLoaded(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Contributor> call, Throwable t) {
+                for (ContributorsListener listener : listeners) {
+                    listener.onContributorsLoadFailed(t.getMessage());
+                }
+            }
+        });
+    }
+
     public void requestCachedContributors() {
         for (ContributorsListener listener : listeners) {
             listener.onContributorsLoaded(contributors);
@@ -70,5 +93,6 @@ public class ContributorsService {
 
         void onContributorsLoaded(List<Contributor> contributors);
         void onContributorsLoadFailed(String message);
+        void onContributorLoaded(Contributor contributor);
     }
 }

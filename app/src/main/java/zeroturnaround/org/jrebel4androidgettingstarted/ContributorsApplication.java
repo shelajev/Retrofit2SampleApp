@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import timber.log.Timber;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
 
 /**
@@ -31,6 +32,8 @@ public class ContributorsApplication extends Application {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+
+        Timber.plant(new Timber.DebugTree());
 
         contributorsService = new ContributorsService();
 
