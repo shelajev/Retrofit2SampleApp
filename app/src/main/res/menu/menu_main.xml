@@ -1,9 +1,9 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="zeroturnaround.org.jrebel4androidgettingstarted.MainActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android = "http://schemas.android.com/apk/res/android" >
+    <item android:id = "@+id/menu_item_picasso"
+        android:title = "@string/menu_title_picasso" />
+    <item android:id = "@+id/menu_item_fresco"
+        android:title = "@string/menu_title_fresco" />
+    <item android:id = "@+id/menu_item_glide"
+        android:title = "@string/menu_title_glide" />
 </menu>

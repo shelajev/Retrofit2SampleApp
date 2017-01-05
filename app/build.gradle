@@ -1,16 +1,19 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+apply plugin: 'com.neenbedankt.android-apt'
+
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "zeroturnaround.org.jrebel4androidgettingstarted"
-        minSdkVersion 23
+        applicationId "org.zeroturnaround.githubcontributors"
+        minSdkVersion 20
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        renderscriptTargetApi 20
+        renderscriptSupportModeEnabled true
     }
     buildTypes {
         release {
@@ -18,17 +21,53 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+
+
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'jp.wasabeef:picasso-transformations:1.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:1.3.1'
+    compile 'com.facebook.fresco:fresco:0.9.0'
+    compile 'jp.wasabeef:fresco-processors:1.1.1'
+    compile 'com.google.firebase:firebase-core:9.0.2'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'frankiesardo:icepick:3.2.0'
+    compile 'com.jakewharton.timber:timber:4.4.0'
+    compile 'org.parceler:parceler-api:1.1.6'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'com.f2prateek.dart:dart:2.0.1'
+    compile 'com.f2prateek.dart:henson:2.0.1'
+    compile 'com.android.support:support-v4:23.4.0'
+    testCompile 'junit:junit:4.12'
+    provided 'org.parceler:parceler:1.1.6'
+    provided 'frankiesardo:icepick-processor:3.2.0'
+    provided 'com.f2prateek.dart:dart-processor:2.0.1'
+    provided 'com.f2prateek.dart:henson-processor:2.0.1'
+    provided 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
 }
+
+apt {
+    arguments {
+        "dart.henson.package" "zeroturnaround.org.jrebel4androidgettingstarted"
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+
+
+
+
+
