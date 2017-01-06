@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "489533901093",
+  "firebase_url": "https://project-3445283499392176858.firebaseio.com",
+  "project_id": "project-3445283499392176858",
+  "storage_bucket": "project-3445283499392176858.appspot.com"
+},
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489533901093:android:d4303946cd868b21",
+        "android_client_info": {
+          "package_name": "org.zeroturnaround.githubcontributors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489533901093-kef034es28uj1or0d2tgencovhvovn9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "CHANGE_ME"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
