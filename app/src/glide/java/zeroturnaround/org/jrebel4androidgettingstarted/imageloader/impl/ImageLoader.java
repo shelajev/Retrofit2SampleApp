@@ -12,12 +12,11 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.ImageLoader;
 
 /**
  * Created by Sten on 17/02/16.
  */
-public class GlideImageLoader implements ImageLoader {
+public class ImageLoader implements zeroturnaround.org.jrebel4androidgettingstarted.imageloader.ImageLoader {
 
     @Override
     public void loadImage(String url, final ImageView imageView) {
@@ -50,7 +49,7 @@ public class GlideImageLoader implements ImageLoader {
 
             @Override
             public String getId() {
-                return GlideImageLoader.class.getName() + ".Transformation";
+                return ImageLoader.class.getName() + ".Transformation";
             }
         }).into(imageView);
     }

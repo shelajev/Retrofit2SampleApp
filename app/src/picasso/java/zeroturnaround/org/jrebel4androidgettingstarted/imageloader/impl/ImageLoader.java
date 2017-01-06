@@ -5,17 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.widget.ImageView;
 
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import jp.wasabeef.picasso.transformations.BlurTransformation;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.ImageLoader;
+import zeroturnaround.org.jrebel4androidgettingstarted.R;
 
 /**
  * Created by Sten on 17/02/16.
  */
-public class PicassoImageLoader implements ImageLoader {
+public class ImageLoader implements zeroturnaround.org.jrebel4androidgettingstarted.imageloader.ImageLoader {
 
     @Override
     public void loadImage(String url,final ImageView imageView) {
@@ -44,7 +43,7 @@ public class PicassoImageLoader implements ImageLoader {
 
             @Override
             public String key() {
-                return PicassoImageLoader.class.getName() + ".Transformation";
+                return ImageLoader.class.getName() + ".Transformation";
             }
         }).error(android.R.drawable.sym_contact_card).placeholder(android.R.drawable.sym_contact_card).
                 into(imageView);

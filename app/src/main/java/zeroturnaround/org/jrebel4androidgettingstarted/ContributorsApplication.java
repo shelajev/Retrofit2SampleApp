@@ -3,8 +3,6 @@ package zeroturnaround.org.jrebel4androidgettingstarted;
 import android.app.Application;
 import android.os.StrictMode;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 import timber.log.Timber;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
 
@@ -18,7 +16,6 @@ public class ContributorsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fresco.initialize(this);
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()

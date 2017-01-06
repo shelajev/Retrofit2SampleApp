@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import zeroturnaround.org.jrebel4androidgettingstarted.ContributorsApplication;
 import zeroturnaround.org.jrebel4androidgettingstarted.R;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.GlideImageLoader;
+import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.ImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
 
@@ -73,8 +73,9 @@ public class ContributorFragment extends Fragment implements ContributorsService
         onContributorLoaded(contributor);
         contributorService.requestUser(contributor);
 
-        GlideImageLoader glideImageLoader = new GlideImageLoader();
-        glideImageLoader.loadImage(contributor.getAvatarUrl(), avatar_imageview);
+
+        ImageLoader imageLoader = new ImageLoader();
+        imageLoader.loadImage(contributor.getAvatarUrl(), avatar_imageview);
 
         return  rootView;
     }

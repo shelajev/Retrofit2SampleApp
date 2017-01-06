@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 import com.f2prateek.dart.Dart;
@@ -28,9 +27,7 @@ import zeroturnaround.org.jrebel4androidgettingstarted.ContributorsApplication;
 import zeroturnaround.org.jrebel4androidgettingstarted.Henson;
 import zeroturnaround.org.jrebel4androidgettingstarted.R;
 import zeroturnaround.org.jrebel4androidgettingstarted.adapter.ContributorsAdapter;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.FrescoImageLoader;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.GlideImageLoader;
-import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.PicassoImageLoader;
+import zeroturnaround.org.jrebel4androidgettingstarted.imageloader.impl.ImageLoader;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.Contributor;
 import zeroturnaround.org.jrebel4androidgettingstarted.service.ContributorsService;
 
@@ -80,7 +77,7 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
 
         View rootView = inflater.inflate(R.layout.fragment_contributors, container, false);
         ButterKnife.bind(this, rootView);
-        contributorsAdapter = new ContributorsAdapter(getActivity(), new GlideImageLoader());
+        contributorsAdapter = new ContributorsAdapter(getActivity(), new ImageLoader());
         contributorsListView.setAdapter(contributorsAdapter);
 
         contributorsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -123,31 +120,6 @@ public class ContributorsFragment extends Fragment implements ContributorsServic
     public void onDestroy() {
         contributorService.removeListener(this);
         super.onDestroy();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_item_fresco) {
-            //Create a new adapter
-            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new FrescoImageLoader());
-            contributorsListView.setAdapter(contributorsAdapter);
-            return true;
-        } else if (item.getItemId() == R.id.menu_item_glide) {
-            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new GlideImageLoader());
-            contributorsListView.setAdapter(contributorsAdapter);
-            return true;
-        } else if (item.getItemId() == R.id.menu_item_picasso) {
-            contributorsAdapter = new ContributorsAdapter(getActivity(), contributors, new PicassoImageLoader());
-            contributorsListView.setAdapter(contributorsAdapter);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

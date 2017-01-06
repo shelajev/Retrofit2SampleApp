@@ -7,6 +7,5 @@ import android.widget.ImageView;
  * Created by Sten on 17/02/16.
  */
 public interface ImageLoader {
-
     void loadImage(String url, ImageView imageView);
 }
