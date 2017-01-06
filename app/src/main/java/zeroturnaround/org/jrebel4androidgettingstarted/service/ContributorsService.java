@@ -1,9 +1,7 @@
 package zeroturnaround.org.jrebel4androidgettingstarted.service;
 
 import android.text.TextUtils;
-import android.util.Log;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class ContributorsService {
         call.enqueue(new Callback<List<Contributor>>() {
             @Override
             public void onResponse(Call<List<Contributor>> call, Response<List<Contributor>> response) {
-                if (response.isSuccess()) {
+                if (response.isSuccessful()) {
                     contributors = response.body();
                     for (ContributorsListener listener : listeners) {
                         listener.onContributorsLoaded(contributors);
