@@ -6,10 +6,11 @@ This is a tiny application that shows how to use a few popular Android libraries
 * Firebase - for analytics
 
 We have written a series of blogposts about it: 
-* [Getting started with Retrofit 2](http://zeroturnaround.com/rebellabs/getting-started-with-retrofit-2/)
-* [Getting started with Glide](http://zeroturnaround.com/rebellabs/android-image-loading-glide/)
-* [Getting started with Picasso](http://zeroturnaround.com/rebellabs/picking-my-next-android-image-loading-library-picasso/)
-* [Getting started with Firebase](http://zeroturnaround.com/rebellabs/getting-started-with-firebase-on-android/)
+* [Getting started with Retrofit 2](https://zeroturnaround.com/rebellabs/getting-started-with-retrofit-2/)
+* [Getting started with Glide](https://zeroturnaround.com/rebellabs/android-image-loading-glide/)
+* [Getting started with Picasso](https://zeroturnaround.com/rebellabs/picking-my-next-android-image-loading-library-picasso/)
+* [Getting started with Firebase](https://zeroturnaround.com/rebellabs/getting-started-with-firebase-on-android/)
+* [Android libraries to keep your code clean](https://zeroturnaround.com/rebellabs/android-libraries-that-can-clean-up-your-code-with-examples/)
 
 Here's what it can look like when you run it: 
 
